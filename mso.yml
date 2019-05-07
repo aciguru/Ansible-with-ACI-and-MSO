@@ -816,3 +816,35 @@
      state: present
      validate_certs: no
     delegate_to: localhost
+
+
+
+- name: Update VM's to portgroup
+  hosts: vc1
+  connection: local
+  gather_facts: no
+
+  vars:
+    switch: S2-VMM
+    vms:
+    - name: RedHat_Demo-app
+      portgroup: RedHat_Ansible|ap1|app
+    - name: RedHat_Demo-db
+      portgroup: RedHat_Ansible|ap1|db
+    - name: RedHat_Demo-web
+      portgroup: RedHat_Ansible|ap1|web
+
+  tasks:
+  - name: Update VMs
+    vmware_guest:
+     hostname: "{{ host }}"
+     username: "{{ user }}"
+     password: "{{ pass }}"
+     datacenter: S2-DC
+     validate_certs: no
+     name: "{{ item.name }}"
+     networks:
+     - name: "{{ item.portgroup }}"
+    delegate_to: localhost
+    loop: "{{ vms }}"
+
