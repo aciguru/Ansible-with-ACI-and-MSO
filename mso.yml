@@ -675,7 +675,7 @@
      validate_certs: no
     delegate_to: localhost
 
-- name: Configuring VMs to a three-tier application [Site 1]
+- name: Configuring VMs to a three-tier application
   hosts: apic1
   connection: local
   gather_facts: no
@@ -686,6 +686,7 @@
     epg1: db
     epg2: web
     epg3: app
+    domain: S2-VMM
 
   tasks:
   - name: Add a new VMM domain
@@ -693,7 +694,7 @@
      host: "{{ host2 }}" 
      username: "{{ user2 }}"
      password: "{{ pass2 }}"
-     domain: VM1
+     domain: "{{ domain }}"
      domain_type: vmm
      vm_provider: vmware
      state: present
@@ -708,19 +709,7 @@
      tenant: "{{ tenant }}"
      ap: "{{ ap }}"
      epg: "{{ epg1 }}"
-     domain: VM1
-     domain_type: vmm
-     vm_provider: vmware
-     state: present
-     validate_certs: no
-    delegate_to: localhost
-
-  - name: Add a new VMM domain
-    aci_domain:
-     host: "{{ host2 }}"
-     username: "{{ user2 }}"
-     password: "{{ pass2 }}"
-     domain: VM2
+     domain: "{{ domain }}"
      domain_type: vmm
      vm_provider: vmware
      state: present
@@ -735,19 +724,7 @@
      tenant: "{{ tenant }}"
      ap: "{{ ap }}"
      epg: "{{ epg2 }}"
-     domain: VM2
-     domain_type: vmm
-     vm_provider: vmware
-     state: present
-     validate_certs: no
-    delegate_to: localhost
-
-  - name: Add a new VMM domain
-    aci_domain:
-     host: "{{ host2 }}"
-     username: "{{ user2 }}"
-     password: "{{ pass2 }}"
-     domain: VM3
+     domain: "{{ domain }}"
      domain_type: vmm
      vm_provider: vmware
      state: present
@@ -762,14 +739,14 @@
      tenant: "{{ tenant }}"
      ap: "{{ ap }}"
      epg: "{{ epg3 }}"
-     domain: VM3
+     domain: "{{ domain }}"
      domain_type: vmm
      vm_provider: vmware
      state: present
      validate_certs: no
     delegate_to: localhost
 
-- name: Configuring VMs to a three-tier application [Site 2]
+- name: Configuring VMs to a three-tier application
   hosts: apic2
   connection: local
   gather_facts: no
@@ -780,6 +757,7 @@
     epg1: db
     epg2: web
     epg3: app
+    domain: S1-VMM
 
   tasks:
   - name: Add a new VMM domain
@@ -787,7 +765,7 @@
      host: "{{ host3 }}" 
      username: "{{ user3 }}"
      password: "{{ pass3 }}"
-     domain: VM1
+     domain: "{{ domain }}"
      domain_type: vmm
      vm_provider: vmware
      state: present
@@ -802,19 +780,7 @@
      tenant: "{{ tenant }}"
      ap: "{{ ap }}"
      epg: "{{ epg1 }}"
-     domain: VM1
-     domain_type: vmm
-     vm_provider: vmware
-     state: present
-     validate_certs: no
-    delegate_to: localhost
-
-  - name: Add a new VMM domain
-    aci_domain:
-     host: "{{ host3 }}"
-     username: "{{ user3 }}"
-     password: "{{ pass3 }}"
-     domain: VM2
+     domain: "{{ domain }}"
      domain_type: vmm
      vm_provider: vmware
      state: present
@@ -829,19 +795,7 @@
      tenant: "{{ tenant }}"
      ap: "{{ ap }}"
      epg: "{{ epg2 }}"
-     domain: VM2
-     domain_type: vmm
-     vm_provider: vmware
-     state: present
-     validate_certs: no
-    delegate_to: localhost
-
-  - name: Add a new VMM domain
-    aci_domain:
-     host: "{{ host3 }}"
-     username: "{{ user3 }}"
-     password: "{{ pass3 }}"
-     domain: VM3
+     domain: "{{ domain }}"
      domain_type: vmm
      vm_provider: vmware
      state: present
@@ -856,7 +810,7 @@
      tenant: "{{ tenant }}"
      ap: "{{ ap }}"
      epg: "{{ epg3 }}"
-     domain: VM3
+     domain: "{{ domain }}"
      domain_type: vmm
      vm_provider: vmware
      state: present
