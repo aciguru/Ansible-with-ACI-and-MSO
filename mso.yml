@@ -701,7 +701,7 @@
      validate_certs: no
     delegate_to: localhost
 
-  - name: Add a new physical domain to EPG binding
+  - name: Adding EPG to VMM domain
     aci_epg_to_domain:
      host: "{{ host2 }}"
      username: "{{ user2 }}"
@@ -716,7 +716,7 @@
      validate_certs: no
     delegate_to: localhost
 
-  - name: Add a new physical domain to EPG binding
+  - name: Adding EPG to VMM domain
     aci_epg_to_domain:
      host: "{{ host2 }}"
      username: "{{ user2 }}"
@@ -731,7 +731,7 @@
      validate_certs: no
     delegate_to: localhost
 
-  - name: Add a new physical domain to EPG binding
+  - name: Adding EPG to VMM domain
     aci_epg_to_domain:
      host: "{{ host2 }}"
      username: "{{ user2 }}"
@@ -772,7 +772,7 @@
      validate_certs: no
     delegate_to: localhost
 
-  - name: Add a new physical domain to EPG binding
+  - name: Adding EPG to VMM domain
     aci_epg_to_domain:
      host: "{{ host3 }}"
      username: "{{ user3 }}"
@@ -787,7 +787,7 @@
      validate_certs: no
     delegate_to: localhost
 
-  - name: Add a new physical domain to EPG binding
+  - name: Adding EPG to VMM domain
     aci_epg_to_domain:
      host: "{{ host3 }}"
      username: "{{ user3 }}"
@@ -802,7 +802,7 @@
      validate_certs: no
     delegate_to: localhost
 
-  - name: Add a new physical domain to EPG binding
+  - name: Adding EPG to VMM domain
     aci_epg_to_domain:
      host: "{{ host3 }}"
      username: "{{ user3 }}"
