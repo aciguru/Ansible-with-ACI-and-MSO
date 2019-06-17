@@ -4,7 +4,7 @@
 
 This Ansible playbook consists of multiple plays of ACI, MSO, and vCenter.
 
-The following items will be created:
+The following tasks will be completed:
 * Create a Tenant 
 * Create a VRF 
 * Create a Bridge Domain 
@@ -26,16 +26,12 @@ This playbook requires the standard set of ACI and MSO modules from Ansible v2.7
 
 Installing Ansible to run your playbooks:
 
-There are two ways you can test this role:
-
-1. Installing it by cloning the Github repository
-```
-git clone https://github.com/ansible/ansible.git
-```
-2. Install and running from source
+1. Using the link provided below - install and run from source
 ```
 https://docs.ansible.com/ansible/devel/installation_guide/intro_installation.html#running-from-source
 ```
+_It's recommended to do a git clone and run from the developers branch_
+
 ## Using the mso.yml playbook
 
 Configure your APIC host and credentials
@@ -44,7 +40,7 @@ Look inside the hosts inventory and provide the needed information. Only the fir
 
 #### Running the mso.yml playbook
 
-##### **Note: Ensure to delete all configurations before running the mso.yml playbook again to avoid 500 Internal Server Error in the _mso_schema_template_contract_filter_ module**
+##### **Note: Ensure to delete all configurations before running the mso.yml playbook again to avoid a 500 Internal Server Error in the _mso_schema_template_contract_filter_ module (has been reported and currently debugging)**
 
 Run the following command using Ansible v2.7:
 
