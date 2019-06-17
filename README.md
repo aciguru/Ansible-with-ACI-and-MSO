@@ -4,6 +4,20 @@
 
 This Ansible playbook consists of multiple plays of ACI, MSO, and vCenter.
 
+The following items will be created:
+* Create a Tenant 
+* Create a VRF 
+* Create a Bridge Domain 
+* Create a Subnet 
+* Create an Application Profile
+* Create EPGs (3 EPGs)
+* Create a Filter 
+* Create a Filter Entry 
+* Create a Contract 
+* Create a Contract Subject and form a relationship to the filter 
+* Relate each EPG to a VMM Domain
+* Assign portgroups to the VMM domain
+
 ## Requirements
 
 This playbook requires the standard set of ACI and MSO modules from Ansible v2.7.
@@ -18,11 +32,33 @@ There are two ways you can test this role:
 ```
 git clone https://github.com/ansible/ansible.git
 ```
-2. Install it using the ansible-galaxy command
+2. Install and running from source
 ```
 https://docs.ansible.com/ansible/devel/installation_guide/intro_installation.html#running-from-source
 ```
 ## Using the mso.yml playbook
+
+Configure your APIC host and credentials
+
+Look inside the hosts inventory and provide the needed information. Only the first APIC, MSO, and vCenter is being used by the playbook.
+
+#### Running the mso.yml playbook
+
+##### **Note: Ensure to delete all configurations before running the mso.yml playbook again to avoid 500 Internal Server Error in the _mso_schema_template_contract_filter_ module**
+
+Run the following command using Ansible v2.7:
+
+```
+ansible-playbook -i ./hosts mso.yml
+```
+
+The first time it will deploy that configuration on your ACI infrastructure.
+
+```
+ansible-playbook -i ./hosts delete-all.yml
+```
+
+You can make modifications and run it again _after running delete-all.yml_ as often as you like to modify the existing configuration.
 
 ## Notes
 
